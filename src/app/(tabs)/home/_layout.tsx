@@ -3,20 +3,9 @@ import React from 'react';
 
 export default function HomeLayout() {
 	return (
-		<Stack>
-			<Stack.Screen
-				name="index"
-				options={{
-					headerShown: false,
-				}}
-			/>
-			<Stack.Screen
-				name="chat"
-				options={{
-					title: 'Chat',
-					headerTitleAlign: 'center',
-				}}
-			/>
+		<Stack screenOptions={{ headerShown: false }}>
+			<Stack.Screen name="index" />
+			<Stack.Screen name="chat" />
 		</Stack>
 	);
 }

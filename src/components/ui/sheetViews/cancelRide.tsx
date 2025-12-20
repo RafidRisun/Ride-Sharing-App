@@ -32,11 +32,6 @@ export default function CancelRide() {
 	);
 	const [selectedReason, setSelectedReason] = useState<string | null>(null);
 
-	// useEffect(() => {
-	// 	setTimeout(() => {
-	// 		dispatch(setCurrentComponent(''));
-	// 	}, 3000);
-	// }, []);
 	return (
 		<BottomSheet
 			ref={bottomSheetRef}
@@ -58,7 +53,7 @@ export default function CancelRide() {
 							<SvgXml
 								xml={selectedReason === reason ? iconTicked : iconUnticked}
 							/>
-							<Text>{reason}</Text>
+							<Text style={tw`text-sm font-sfprobold`}>{reason}</Text>
 						</TouchableOpacity>
 					))}
 				</View>

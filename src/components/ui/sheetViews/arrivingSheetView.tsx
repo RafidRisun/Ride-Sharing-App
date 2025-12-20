@@ -4,6 +4,7 @@ import { setCurrentComponent } from '@/src/state/slices/currentComponentSlice';
 import { collapse, expand } from '@/src/state/slices/expandSlice';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { Image } from 'expo-image';
+import { useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SvgXml } from 'react-native-svg';
@@ -11,6 +12,7 @@ import { useDispatch } from 'react-redux';
 
 export default function ArrivingSheetView() {
 	const dispatch = useDispatch();
+	const router = useRouter();
 	// ref
 	const bottomSheetRef = useRef<BottomSheet>(null);
 
@@ -99,7 +101,10 @@ export default function ArrivingSheetView() {
 						placeholder="Type a message"
 					/>
 					{/* </KeyboardAvoidingView> */}
-					<TouchableOpacity style={tw`bg-green rounded-md p-3 justify-center`}>
+					<TouchableOpacity
+						style={tw`bg-green rounded-md p-3 justify-center`}
+						onPress={() => router.push('/(tabs)/home/chat')}
+					>
 						<Text style={tw`text-white`}>Send</Text>
 					</TouchableOpacity>
 				</View>
