@@ -1,9 +1,10 @@
 import { iconCall, iconDots } from '@/assets/icons';
 import tw from '@/src/lib/tailwind';
+import { setCurrentComponent } from '@/src/state/slices/currentComponentSlice';
 import { collapse, expand } from '@/src/state/slices/expandSlice';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { Image } from 'expo-image';
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import { useDispatch } from 'react-redux';
@@ -25,6 +26,12 @@ export default function ArrivingSheetView() {
 		},
 		[dispatch]
 	);
+
+	useEffect(() => {
+		setTimeout(() => {
+			dispatch(setCurrentComponent('tripDetails'));
+		}, 3000);
+	}, []);
 
 	return (
 		<BottomSheet

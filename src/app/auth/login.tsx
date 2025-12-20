@@ -33,7 +33,7 @@ export default function Login() {
 				<TouchableOpacity
 					style={tw`flex items-center justify-center py-3 bg-green rounded-xl w-full`}
 					onPress={() => {
-						router.push('/(tabs)');
+						router.push('/(tabs)/home');
 					}}
 				>
 					<Text style={tw`text-white font-sfpromedium`}>Log In</Text>
