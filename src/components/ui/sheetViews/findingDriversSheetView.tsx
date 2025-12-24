@@ -45,9 +45,7 @@ export default function PickDestinationSheetView() {
 		setTimeout(() => {
 			setProgress(100);
 		}, 4000);
-		setTimeout(() => {
-			dispatch(setCurrentComponent('arriving'));
-		}, 6000);
+		setTimeout(() => {}, 6000);
 	}, []);
 
 	return (
@@ -57,6 +55,14 @@ export default function PickDestinationSheetView() {
 			index={1}
 			snapPoints={['15%', '65%', '60%']}
 		>
+			<TouchableOpacity
+				style={tw`absolute top-0 right-5 z-10 bg-blue-300 p-1 rounded-full opacity-20`}
+				onPress={() => {
+					dispatch(setCurrentComponent('arriving'));
+				}}
+			>
+				<Text>Temporary Button to go to next step</Text>
+			</TouchableOpacity>
 			<BottomSheetView
 				style={tw`flex-1 items-center justify-center flex gap-5 py-5`}
 			>

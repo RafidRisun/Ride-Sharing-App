@@ -5,7 +5,7 @@ import { collapse, expand } from '@/src/state/slices/expandSlice';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import { useDispatch } from 'react-redux';
@@ -29,11 +29,11 @@ export default function ArrivingSheetView() {
 		[dispatch]
 	);
 
-	useEffect(() => {
-		setTimeout(() => {
-			dispatch(setCurrentComponent('tripDetails'));
-		}, 3000);
-	}, []);
+	// useEffect(() => {
+	// 	setTimeout(() => {
+	// 		dispatch(setCurrentComponent('tripDetails'));
+	// 	}, 3000);
+	// }, []);
 
 	return (
 		<BottomSheet
@@ -43,6 +43,14 @@ export default function ArrivingSheetView() {
 			snapPoints={['15%', '80%']}
 			//keyboardBehavior="interactive"
 		>
+			<TouchableOpacity
+				style={tw`absolute top-0 right-5 z-10 bg-blue-300 p-1 rounded-full opacity-20`}
+				onPress={() => {
+					dispatch(setCurrentComponent('tripDetails'));
+				}}
+			>
+				<Text>Temporary Button to go to next step</Text>
+			</TouchableOpacity>
 			<BottomSheetView style={tw`flex-1 items-center p-5 flex gap-5`}>
 				<View style={tw`flex flex-col items-center gap-1`}>
 					<Text style={tw`text-xl font-sfprobold`}>Pick-up in 3 mins</Text>
