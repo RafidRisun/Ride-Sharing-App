@@ -41,6 +41,14 @@ export default function TripDetails() {
 			index={1}
 			snapPoints={['15%', '65%', '60%']}
 		>
+			<TouchableOpacity
+				style={tw`absolute top-0 right-5 z-10 bg-blue-300 p-1 rounded-full opacity-20`}
+				onPress={() => {
+					//dispatch(setCurrentComponent('tripDetails'));
+				}}
+			>
+				<Text>Temporary Button to go to next step</Text>
+			</TouchableOpacity>
 			<BottomSheetView
 				style={tw`flex-1 items-center justify-center flex gap-5 py-5`}
 			>
