@@ -1,6 +1,6 @@
 import tw from '@/src/lib/tailwind';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 import { iconDestination, iconPickup } from '@/assets/icons';
@@ -14,7 +14,6 @@ import ChooseButton from '../chooseButton';
 
 export default function TripDetails() {
 	const router = useRouter();
-	const [progress, setProgress] = useState(0);
 	const dispatch = useDispatch();
 	// ref
 	const bottomSheetRef = useRef<BottomSheet>(null);
