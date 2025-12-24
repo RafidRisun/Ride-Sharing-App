@@ -5,8 +5,12 @@ import ChooseButton from '../ui/chooseButton';
 
 export default function SuccessModal({
 	setSuccessModal,
+	setRateDriverModalVisible,
+	setTipModalVisible,
 }: {
 	setSuccessModal: (visible: boolean) => void;
+	setRateDriverModalVisible: (visible: boolean) => void;
+	setTipModalVisible: (visible: boolean) => void;
 }) {
 	return (
 		<View style={tw`flex-1 items-center justify-center bg-black bg-opacity-20`}>
@@ -18,12 +22,14 @@ export default function SuccessModal({
 					text="Add Tip"
 					onPress={() => {
 						setSuccessModal(false);
+						setTipModalVisible(true);
 					}}
 				/>
 				<ChooseButton
 					text="Rate your Driver"
 					onPress={() => {
 						setSuccessModal(false);
+						setRateDriverModalVisible(true);
 					}}
 				/>
 			</View>

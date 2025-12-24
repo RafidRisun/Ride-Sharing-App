@@ -1,6 +1,8 @@
 import { iconBack } from '@/assets/icons';
 import PaymentModal from '@/src/components/Modals/PaymentModal';
+import RateDriver from '@/src/components/Modals/RateDriver';
 import SuccessModal from '@/src/components/Modals/SuccessModal';
+import TipModal from '@/src/components/Modals/TipModal';
 import Header from '@/src/components/ui/header';
 import ArrivingSheetView from '@/src/components/ui/sheetViews/arrivingSheetView';
 import CancelRide from '@/src/components/ui/sheetViews/cancelRide';
@@ -33,6 +35,10 @@ export default function Index() {
 	const [payModalVisible, setPayModalVisible] = useState(false);
 
 	const [successModalVisible, setSuccessModalVisible] = useState(false);
+
+	const [rateDriverModalVisible, setRateDriverModalVisible] = useState(false);
+
+	const [tipModalVisible, setTipModalVisible] = useState(false);
 
 	const currentComponent = useSelector(
 		(state: RootState) =>
@@ -122,7 +128,21 @@ export default function Index() {
 				animationType="none"
 				transparent={true}
 			>
-				<SuccessModal setSuccessModal={setSuccessModalVisible} />
+				<SuccessModal
+					setSuccessModal={setSuccessModalVisible}
+					setRateDriverModalVisible={setRateDriverModalVisible}
+					setTipModalVisible={setTipModalVisible}
+				/>
+			</Modal>
+			<Modal
+				visible={rateDriverModalVisible}
+				animationType="none"
+				transparent={true}
+			>
+				<RateDriver setRateDriverModalVisible={setRateDriverModalVisible} />
+			</Modal>
+			<Modal visible={tipModalVisible} animationType="none" transparent={true}>
+				<TipModal setTipModalVisible={setTipModalVisible} />
 			</Modal>
 		</KeyboardAvoidingView>
 	);
