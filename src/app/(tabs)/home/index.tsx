@@ -1,4 +1,6 @@
 import { iconBack } from '@/assets/icons';
+import PaymentModal from '@/src/components/Modals/PaymentModal';
+import SuccessModal from '@/src/components/Modals/SuccessModal';
 import Header from '@/src/components/ui/header';
 import ArrivingSheetView from '@/src/components/ui/sheetViews/arrivingSheetView';
 import CancelRide from '@/src/components/ui/sheetViews/cancelRide';
@@ -13,8 +15,13 @@ import { returnFromCurrentComponent } from '@/src/state/slices/currentComponentS
 import { RootState } from '@/src/state/store';
 import { bothPlatform } from '@/src/utils/utils';
 import { ImageBackground } from 'expo-image';
-import React, { useEffect, useRef } from 'react';
-import { Animated, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+	Animated,
+	KeyboardAvoidingView,
+	Modal,
+	TouchableOpacity,
+} from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SvgXml } from 'react-native-svg';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,6 +29,11 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function Index() {
 	const expanded = useSelector((state: RootState) => state.expand.expanded);
 	const dispatch = useDispatch();
+
+	const [payModalVisible, setPayModalVisible] = useState(false);
+
+	const [successModalVisible, setSuccessModalVisible] = useState(false);
+
 	const currentComponent = useSelector(
 		(state: RootState) =>
 			state.currentComponent[state.currentComponent.length - 1]
@@ -38,6 +50,14 @@ export default function Index() {
 			useNativeDriver: true,
 		}).start();
 	}, [expanded, headerTranslate]);
+
+	useEffect(() => {
+		if (currentComponent === 'tripDetails') {
+			setTimeout(() => {
+				setPayModalVisible(true);
+			}, 3000);
+		}
+	}, [currentComponent]);
 
 	return (
 		<KeyboardAvoidingView
@@ -90,6 +110,20 @@ export default function Index() {
 				{currentComponent === 'tripDetails' && <TripDetails />}
 				{currentComponent === 'cancelRide' && <CancelRide />}
 			</GestureHandlerRootView>
+
+			<Modal visible={payModalVisible} animationType="none" transparent={true}>
+				<PaymentModal
+					setPayModalVisible={setPayModalVisible}
+					setSuccessModal={setSuccessModalVisible}
+				/>
+			</Modal>
+			<Modal
+				visible={successModalVisible}
+				animationType="none"
+				transparent={true}
+			>
+				<SuccessModal setSuccessModal={setSuccessModalVisible} />
+			</Modal>
 		</KeyboardAvoidingView>
 	);
 }

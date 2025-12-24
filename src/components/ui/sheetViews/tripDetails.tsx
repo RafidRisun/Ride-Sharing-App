@@ -1,6 +1,6 @@
 import tw from '@/src/lib/tailwind';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 
 import { iconDestination, iconPickup } from '@/assets/icons';
@@ -32,11 +32,9 @@ export default function TripDetails() {
 		[dispatch]
 	);
 
-	// useEffect(() => {
-	// 	setTimeout(() => {
-	// 		dispatch(setCurrentComponent(''));
-	// 	}, 3000);
-	// }, []);
+	useEffect(() => {
+		setTimeout(() => {}, 3000);
+	}, []);
 	return (
 		<BottomSheet
 			ref={bottomSheetRef}
