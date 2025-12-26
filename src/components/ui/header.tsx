@@ -17,7 +17,7 @@ export default function Header() {
 
 	return (
 		<View
-			style={tw`flex flex-col w-full items-center justify-end p-3 bg-green rounded-b-xl absolute top-0 z-20`}
+			style={tw`flex flex-col w-full items-center justify-end p-3 pt-6 bg-green rounded-b-2xl absolute top-0 z-20`}
 		>
 			<View style={tw`flex flex-row w-full items-center justify-between p-3`}>
 				<Image

@@ -3,7 +3,6 @@ import { SplashScreen, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import { store } from '../state/store';
 
@@ -27,12 +26,10 @@ export default function RootLayout() {
 	return (
 		<Provider store={store}>
 			<GestureHandlerRootView>
-				<SafeAreaView style={{ flex: 1 }}>
-					<Stack screenOptions={{ headerShown: false }}>
-						<Stack.Screen name="index" />
-					</Stack>
-					<StatusBar style={'dark'} />
-				</SafeAreaView>
+				<Stack screenOptions={{ headerShown: false }}>
+					<Stack.Screen name="index" />
+				</Stack>
+				<StatusBar style="light" />
 			</GestureHandlerRootView>
 		</Provider>
 	);

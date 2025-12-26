@@ -15,7 +15,6 @@ import TripDetails from '@/src/components/ui/sheetViews/tripDetails';
 import tw from '@/src/lib/tailwind';
 import { returnFromCurrentComponent } from '@/src/state/slices/currentComponentSlice';
 import { RootState } from '@/src/state/store';
-import { bothPlatform } from '@/src/utils/utils';
 import { ImageBackground } from 'expo-image';
 import React, { useEffect, useRef, useState } from 'react';
 import {
@@ -67,7 +66,7 @@ export default function Index() {
 
 	return (
 		<KeyboardAvoidingView
-			behavior={bothPlatform === 'ios' ? 'padding' : 'height'}
+			behavior="padding"
 			// keyboardVerticalOffset={80}
 			style={{ flex: 1 }}
 		>
