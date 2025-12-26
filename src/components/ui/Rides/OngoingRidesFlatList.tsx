@@ -30,7 +30,7 @@ export default function OngoingRidesFlatList({ data }: { data: any[] }) {
 									⭐ {item.rating}
 								</Text>
 							</View>
-							<View>
+							<View style={tw`flex flex-col gap-2`}>
 								<Text style={tw`font-sfprobold text-sm`}>
 									{item.driverName}
 								</Text>

@@ -87,6 +87,8 @@ const historyRidesData: any[] | null = [
 		rideDate: '2024-03-20',
 		rating: 4.9,
 		vehicleColor: 'Black',
+		tipped: null,
+		rated: null,
 	},
 	{
 		id: '2',
@@ -96,6 +98,8 @@ const historyRidesData: any[] | null = [
 		rideDate: '2024-03-18',
 		rating: 4.6,
 		vehicleColor: 'White',
+		tipped: 5,
+		rated: 5,
 	},
 	{
 		id: '3',
@@ -105,5 +109,7 @@ const historyRidesData: any[] | null = [
 		rideDate: '2024-03-15',
 		rating: 4.8,
 		vehicleColor: 'Silver',
+		tipped: 10,
+		rated: 3.5,
 	},
 ];

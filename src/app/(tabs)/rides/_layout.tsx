@@ -16,6 +16,12 @@ export default function RidesLayout() {
 					headerShown: false,
 				}}
 			/>
+			<Stack.Screen
+				name="rideDetails"
+				options={{
+					headerShown: false,
+				}}
+			/>
 		</Stack>
 	);
 }

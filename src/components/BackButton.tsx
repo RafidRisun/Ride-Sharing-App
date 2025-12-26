@@ -10,7 +10,7 @@ export default function BackButton() {
 	const dispatch = useDispatch();
 	return (
 		<TouchableOpacity
-			style={tw`absolute left-4 top-8 z-10`}
+			style={tw`absolute left-4 top-10 z-10`}
 			onPress={() => {
 				dispatch(returnFromCurrentComponent());
 			}}

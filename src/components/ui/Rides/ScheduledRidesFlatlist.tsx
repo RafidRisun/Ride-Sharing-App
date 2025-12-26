@@ -51,19 +51,19 @@ export default function ScheduledRidesFlatlist({ data }: { data: any[] }) {
 						>
 							<View style={tw`flex w-full flex-col gap-2`}>
 								<View
-									style={tw`flex flex-row items-center rounded-sm px-3 py-4 gap-3 w-full`}
+									style={tw`flex flex-row items-center rounded-sm px-3 py-2 gap-3 w-full`}
 								>
 									<SvgXml xml={iconPickup} width={20} height={20} />
 									<Text>Pick-up location</Text>
 								</View>
 								<View
-									style={tw`flex flex-row items-center rounded-sm px-3 py-4 gap-3 w-full`}
+									style={tw`flex flex-row items-center rounded-sm px-3 py-2 gap-3 w-full`}
 								>
 									<SvgXml xml={iconDestination} width={22} height={22} />
 									<Text>Destination</Text>
 								</View>
 								<View
-									style={tw`h-8 border-l-2 border-black absolute left-5.2 top-10`}
+									style={tw`h-5 border-l-2 border-black absolute left-5.5 top-7.5`}
 								/>
 								<View
 									style={tw`flex flex-col gap-1 absolute top-0 right-0 items-end`}
@@ -90,7 +90,7 @@ export default function ScheduledRidesFlatlist({ data }: { data: any[] }) {
 											⭐ {item.rating}
 										</Text>
 									</View>
-									<View>
+									<View style={tw`flex flex-col gap-2`}>
 										<Text style={tw`font-sfprobold text-sm`}>
 											{item.driverName}
 										</Text>

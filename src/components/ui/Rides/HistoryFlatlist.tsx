@@ -1,11 +1,13 @@
-import { iconDestination, iconPickup } from '@/assets/icons';
+import { iconDestination, iconPickup, iconRate } from '@/assets/icons';
 import tw from '@/src/lib/tailwind';
 import { Image } from 'expo-image';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 
 export default function HistoryFlatlist({ data }: { data: any[] }) {
+	const router = useRouter();
 	return (
 		<>
 			{data.length === 0 && (
@@ -33,24 +35,25 @@ export default function HistoryFlatlist({ data }: { data: any[] }) {
 					style={tw`flex-1 w-full px-4 py-1`}
 					contentContainerStyle={tw`gap-4`}
 					renderItem={({ item }) => (
-						<View
+						<TouchableOpacity
+							onPress={() => router.push('/(tabs)/rides/rideDetails')}
 							style={tw`flex flex-col gap-2 p-3 bg-white shadow-md rounded-sm`}
 						>
 							<View style={tw`flex w-full flex-col gap-2`}>
 								<View
-									style={tw`flex flex-row items-center rounded-sm px-3 py-4 gap-3 w-full`}
+									style={tw`flex flex-row items-center rounded-sm px-3 py-2 gap-3 w-full`}
 								>
 									<SvgXml xml={iconPickup} width={20} height={20} />
 									<Text>Pick-up location</Text>
 								</View>
 								<View
-									style={tw`flex flex-row items-center rounded-sm px-3 py-4 gap-3 w-full`}
+									style={tw`flex flex-row items-center rounded-sm px-3 py-2 gap-3 w-full`}
 								>
 									<SvgXml xml={iconDestination} width={22} height={22} />
 									<Text>Destination</Text>
 								</View>
 								<View
-									style={tw`h-8 border-l-2 border-black absolute left-5.2 top-10`}
+									style={tw`h-5 border-l-2 border-black absolute left-5.5 top-7.5`}
 								/>
 								<View
 									style={tw`flex flex-col gap-1 absolute top-0 right-0 items-end`}
@@ -60,7 +63,7 @@ export default function HistoryFlatlist({ data }: { data: any[] }) {
 										2:32 PM
 									</Text>
 									<View
-										style={tw`mt-1 px-2 py-1 bg-green bg-opacity-20 rounded-full`}
+										style={tw`mt-1 px-2 py-1 bg-green bg-opacity-20 rounded-full mt-4`}
 									>
 										<Text style={tw`text-xs font-sfprobold text-green`}>
 											Completed
@@ -84,7 +87,7 @@ export default function HistoryFlatlist({ data }: { data: any[] }) {
 											⭐ {item.rating}
 										</Text>
 									</View>
-									<View>
+									<View style={tw`flex flex-col gap-2`}>
 										<Text style={tw`font-sfprobold text-sm`}>
 											{item.driverName}
 										</Text>
@@ -101,20 +104,24 @@ export default function HistoryFlatlist({ data }: { data: any[] }) {
 								<TouchableOpacity
 									style={tw`flex flex-row gap-2 flex-1 bg-gray-300 px-4 py-3 rounded-sm items-center justify-center`}
 								>
-									{/* <SvgXml xml={iconCallGray} /> */}
+									<SvgXml xml={iconRate} />
 									<Text style={tw`text-gray-600 font-sfpromedium text-sm`}>
-										Rate Driver
+										{item.rated !== null ? item.rated : 'Rate Driver'}
 									</Text>
 								</TouchableOpacity>
 								<TouchableOpacity
-									style={tw`flex-1 bg-green px-4 py-3 rounded-sm items-center justify-center`}
+									style={tw`flex-1 bg-${
+										item.tipped !== null ? 'green' : '[#E8BA00]'
+									} px-4 py-3 rounded-sm items-center justify-center`}
 								>
 									<Text style={tw`text-white font-sfpromedium text-sm`}>
-										Add Tip
+										{item.tipped !== null
+											? `Tipped $${item.tipped}`
+											: 'Add Tip'}
 									</Text>
 								</TouchableOpacity>
 							</View>
-						</View>
+						</TouchableOpacity>
 					)}
 				/>
 			)}
