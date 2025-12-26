@@ -1,4 +1,4 @@
-import { iconBack } from '@/assets/icons';
+import BackButton from '@/src/components/BackButton';
 import PaymentModal from '@/src/components/Modals/PaymentModal';
 import RateDriver from '@/src/components/Modals/RateDriver';
 import SuccessModal from '@/src/components/Modals/SuccessModal';
@@ -13,18 +13,11 @@ import HomeBottomSheetView from '@/src/components/ui/sheetViews/homeBottomSheetV
 import PickDestinationSheetView from '@/src/components/ui/sheetViews/pickDestinationSheetView';
 import TripDetails from '@/src/components/ui/sheetViews/tripDetails';
 import tw from '@/src/lib/tailwind';
-import { returnFromCurrentComponent } from '@/src/state/slices/currentComponentSlice';
 import { RootState } from '@/src/state/store';
 import { ImageBackground } from 'expo-image';
 import React, { useEffect, useRef, useState } from 'react';
-import {
-	Animated,
-	KeyboardAvoidingView,
-	Modal,
-	TouchableOpacity,
-} from 'react-native';
+import { Animated, KeyboardAvoidingView, Modal } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { SvgXml } from 'react-native-svg';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function Index() {
@@ -70,19 +63,11 @@ export default function Index() {
 			// keyboardVerticalOffset={80}
 			style={{ flex: 1 }}
 		>
+			{/* <StatusBar style={currentComponent === 'planTrip' ? 'light' : 'dark'} /> */}
 			<GestureHandlerRootView
 				style={tw`flex-1 bg-slate-500 flex items-center justify-start`}
 			>
-				{currentComponent !== 'planTrip' && (
-					<TouchableOpacity
-						style={tw`absolute left-4 top-4 z-10`}
-						onPress={() => {
-							dispatch(returnFromCurrentComponent());
-						}}
-					>
-						<SvgXml xml={iconBack} width={34} height={34} />
-					</TouchableOpacity>
-				)}
+				{currentComponent !== 'planTrip' && <BackButton />}
 				{currentComponent === 'planTrip' && (
 					<Animated.View
 						style={{

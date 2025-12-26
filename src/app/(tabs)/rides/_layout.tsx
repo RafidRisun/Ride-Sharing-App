@@ -10,6 +10,12 @@ export default function RidesLayout() {
 					headerShown: false,
 				}}
 			/>
+			<Stack.Screen
+				name="trackScreen"
+				options={{
+					headerShown: false,
+				}}
+			/>
 		</Stack>
 	);
 }
