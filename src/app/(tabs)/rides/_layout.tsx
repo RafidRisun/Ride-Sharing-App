@@ -22,6 +22,12 @@ export default function RidesLayout() {
 					headerShown: false,
 				}}
 			/>
+			<Stack.Screen
+				name="receipt"
+				options={{
+					headerShown: false,
+				}}
+			/>
 		</Stack>
 	);
 }

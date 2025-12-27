@@ -114,6 +114,9 @@ export default function RideDetails() {
 						<View style={tw`flex flex-col items-center gap-2`}>
 							<TouchableOpacity
 								style={tw`flex items-center justify-center bg-white h-10 w-10 rounded-full shadow-md`}
+								onPress={() => {
+									router.push('/(tabs)/rides/receipt');
+								}}
 							>
 								<SvgXml xml={iconReceipt} />
 							</TouchableOpacity>

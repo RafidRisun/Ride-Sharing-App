@@ -9,7 +9,8 @@ export default function Index() {
 	const router = useRouter();
 	useEffect(() => {
 		setTimeout(() => {
-			router.replace('/onboarding');
+			//router.replace('/onboarding');
+			router.replace('/(tabs)/rides');
 		}, 3500);
 	});
 
