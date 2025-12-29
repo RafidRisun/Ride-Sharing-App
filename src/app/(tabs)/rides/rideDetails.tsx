@@ -1,9 +1,5 @@
-import {
-	iconBack,
-	iconDestination,
-	iconPickup,
-	iconReceipt,
-} from '@/assets/icons';
+import { iconDestination, iconPickup, iconReceipt } from '@/assets/icons';
+import HeaderWithBackButton from '@/src/components/HeaderWithBackButton';
 import tw from '@/src/lib/tailwind';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { Image } from 'expo-image';
@@ -23,16 +19,8 @@ export default function RideDetails() {
 	}, []);
 	return (
 		<GestureHandlerRootView style={{ flex: 1 }}>
-			<TouchableOpacity
-				style={tw`absolute left-4 top-10 z-10`}
-				onPress={() => {
-					router.back();
-				}}
-			>
-				<SvgXml xml={iconBack} width={34} height={34} />
-			</TouchableOpacity>
-			<View style={tw`flex gap-8 w-full items-center bg-white pt-12 pb-4 px-4`}>
-				<Text style={tw`font-sfprobold text-lg`}>Ride Details</Text>
+			<HeaderWithBackButton title="Ride Details" />
+			<View style={tw`flex gap-8 w-full items-center bg-white pb-4 px-4`}>
 				<View style={tw`flex flex-row w-full items-center gap-2`}>
 					<View style={tw`flex flex-row items-center gap-4 flex-1`}>
 						<Image

@@ -1,9 +1,8 @@
-import { iconBack } from '@/assets/icons';
+import HeaderWithBackButton from '@/src/components/HeaderWithBackButton';
 import ChooseButton from '@/src/components/ui/chooseButton';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { SvgXml } from 'react-native-svg';
+import { Text, View } from 'react-native';
 import tw from '../../../lib/tailwind';
 
 export default function Receipt() {
@@ -15,18 +14,9 @@ export default function Receipt() {
 				justifyContent: 'flex-start',
 				alignItems: 'center',
 				backgroundColor: 'white',
-				paddingTop: 50,
 			}}
 		>
-			<TouchableOpacity
-				style={tw`absolute left-4 top-10 z-10`}
-				onPress={() => {
-					router.back();
-				}}
-			>
-				<SvgXml xml={iconBack} width={34} height={34} />
-			</TouchableOpacity>
-			<Text style={tw`font-sfprobold text-lg`}>Receipt</Text>
+			<HeaderWithBackButton title="Receipt" />
 			<View style={tw`mt-4 flex-1 flex flex-col gap-4 w-full p-12`}>
 				<View style={tw`flex flex-row justify-between`}>
 					<Text style={tw`font-sfprobold text-gray-500 flex-1`}>Driver</Text>
